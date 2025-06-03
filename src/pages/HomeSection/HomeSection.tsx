@@ -1,9 +1,24 @@
 import { Marquee } from '@/components/Animations/Marquee';
 
 import DoubleFacedCard from '@/components/Animations/DoubleFacedCard';
-import { InfiniteTyping } from '@/components/Animations/InfiniteTyping';
+import { WordRotate } from '@/components/Animations/WordRotate';
+import { TypingAnimation } from '@/components/Animations/TypingAnimation';
 
 export default function HomeSection() {
+  const words = [
+    'Full-Stack Developer',
+    'iOS Developer',
+    'Cloud Automation Engineer',
+    'Disaster Recovery Architect',
+    'DevOps Enthusiast',
+    'Backend with FastAPI',
+    'React & TypeScript Developer',
+    'Cloud-Native Solutions Builder',
+    'SaaS Platform Engineer',
+    'Infra - Aware Coder',
+    'Resilience - First Engineer',
+  ];
+
   return (
     <section
       id="home"
@@ -33,18 +48,12 @@ export default function HomeSection() {
         <div className="flex flex-col items-center justify-evenly gap-auto text-black py-0 min-h-[300px] h-full">
           <div className="flex flex-col items-center gap-0">
             <h1 className="text-5xl font-bold leading-tight">
-              Hi, I’m Hridayan
+              <TypingAnimation>Hi, I'm Hridayan</TypingAnimation>
             </h1>
-            <InfiniteTyping
-              texts={[
-                '< Hello, World! />',
-                '< Namaste, World! />',
-                '< Bonjour, World! />',
-                '< Konnichiwa, World! />',
-              ]}
-              typingSpeed={100}
-              eraseSpeed={100}
-              pauseTime={1000}
+
+            <WordRotate
+              words={words}
+              className="text-[18px] font-normal tracking-[-0.02em]"
             />
           </div>
 

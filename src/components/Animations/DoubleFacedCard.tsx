@@ -79,7 +79,7 @@ const DoubleFacedCard = () => {
               </defs>
               <text
                 fill="black"
-                fontSize="18"
+                fontSize="17"
                 fontWeight="600"
                 letterSpacing="2"
               >

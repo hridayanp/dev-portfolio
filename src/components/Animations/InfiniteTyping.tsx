@@ -57,15 +57,5 @@ export function InfiniteTyping({
     return () => clearInterval(typingInterval);
   }, [textIndex, isDeleting, typingSpeed, eraseSpeed, pauseTime]);
 
-  return (
-    <motion.div
-      className={cn(
-        'text-[18px] font-normal leading-[3rem] tracking-[-0.02em]',
-        className
-      )}
-    >
-      {`👋 ${currentText}`}
-      <span className="animate-blink">|</span>
-    </motion.div>
-  );
+  return <motion.div className={cn(className)}>{`${currentText}`}</motion.div>;
 }
