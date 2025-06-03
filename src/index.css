@@ -156,3 +156,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    transform: translateY(-10px);
+    animation-timing-function: ease-in-out;
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
