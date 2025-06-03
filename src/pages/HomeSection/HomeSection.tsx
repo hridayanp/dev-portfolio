@@ -2,7 +2,7 @@ import { Marquee } from '@/components/Animations/Marquee';
 
 import DoubleFacedCard from '@/components/Animations/DoubleFacedCard';
 import { WordRotate } from '@/components/Animations/WordRotate';
-import { TypingAnimation } from '@/components/Animations/TypingAnimation';
+import { InfiniteTyping } from '@/components/Animations/InfiniteTyping';
 
 export default function HomeSection() {
   const words = [
@@ -47,9 +47,13 @@ export default function HomeSection() {
         {/* Center Column (Main Content) */}
         <div className="flex flex-col items-center justify-evenly gap-auto text-black py-0 min-h-[300px] h-full">
           <div className="flex flex-col items-center gap-0">
-            <h1 className="text-5xl font-bold leading-tight">
-              <TypingAnimation>Hi, I'm Hridayan</TypingAnimation>
-            </h1>
+            <InfiniteTyping
+              texts={["Hi, I'm Hridayan"]}
+              typingSpeed={100}
+              eraseSpeed={100}
+              pauseTime={1000}
+              className="text-5xl font-bold leading-tight"
+            />
 
             <WordRotate
               words={words}
