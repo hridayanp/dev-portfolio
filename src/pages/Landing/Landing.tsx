@@ -1,4 +1,5 @@
 import Header from '@/components/Header/Header';
+import HomeSection from '../HomeSection/HomeSection';
 
 const Landing = () => {
   return (
@@ -6,12 +7,7 @@ const Landing = () => {
       <Header />
 
       <main>
-        <div
-          id="home"
-          className="h-screen bg-blue-100 flex items-center justify-center"
-        >
-          <h1 className="text-4xl font-bold">Home Section</h1>
-        </div>
+        <HomeSection />
 
         <div
           id="about"
