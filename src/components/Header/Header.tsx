@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -12,14 +12,13 @@ const navItems = [
 export default function Header() {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [indicatorProps, setIndicatorProps] = useState({ left: 0, width: 0 });
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
       const threshold = 100;
       const scrollMiddle = window.scrollY + window.innerHeight / 2;
-
       let currentSection = 'home';
 
       for (const { targetId } of navItems) {
@@ -27,7 +26,6 @@ export default function Header() {
         if (el) {
           const rect = el.getBoundingClientRect();
           const elementTop = rect.top + window.scrollY;
-
           if (scrollMiddle >= elementTop - threshold) {
             currentSection = targetId;
           }
@@ -57,6 +55,7 @@ export default function Header() {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setMenuOpen(false); // close drawer on selection (mobile)
     }
   };
 
@@ -67,9 +66,9 @@ export default function Header() {
       transition={{ duration: 0.6 }}
       className="fixed top-0 left-0 z-50 w-full bg-transparent"
     >
-      <div className="mx-auto max-w-4xl px-4 py-3 flex justify-center">
+      {/* Desktop Nav */}
+      <div className="hidden sm:flex mx-auto max-w-4xl px-4 py-3 justify-center">
         <div className="relative flex overflow-hidden rounded-full bg-white shadow-sm h-[55px]">
-          {/* Animated background indicator */}
           <motion.div
             className="absolute top-0 bottom-0 rounded-full bg-orange-500"
             layout
@@ -98,6 +97,54 @@ export default function Header() {
           ))}
         </div>
       </div>
+
+      {/* Mobile Menu Button */}
+      <div className="sm:hidden absolute top-5 right-5 z-50">
+        <button
+          className="relative w-8 h-8 flex flex-col justify-center items-center"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <motion.span
+            className="w-6 h-0.5 bg-black rounded-sm absolute"
+            animate={{
+              rotate: menuOpen ? 45 : 0,
+              y: menuOpen ? 0 : -6,
+            }}
+            transition={{ duration: 0.3 }}
+          />
+          <motion.span
+            className="w-6 h-0.5 bg-black rounded-sm absolute"
+            animate={{
+              rotate: menuOpen ? -45 : 0,
+              y: menuOpen ? 0 : 6,
+            }}
+            transition={{ duration: 0.3 }}
+          />
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: '-100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+            className="sm:hidden fixed top-0 left-0 w-full h-screen bg-white z-40 flex flex-col items-center justify-center space-y-8 px-6"
+          >
+            {navItems.map(({ name, targetId }) => (
+              <button
+                key={targetId}
+                onClick={() => scrollToSection(targetId)}
+                className="text-2xl font-semibold text-black hover:text-orange-500 transition-colors"
+              >
+                {name}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

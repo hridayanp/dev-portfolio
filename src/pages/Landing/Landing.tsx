@@ -5,7 +5,7 @@ const Landing = () => {
     <div className="relative">
       <Header />
 
-      <main className="pt-20">
+      <main>
         <div
           id="home"
           className="h-screen bg-blue-100 flex items-center justify-center"
