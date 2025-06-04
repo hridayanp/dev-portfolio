@@ -1,5 +1,6 @@
 import Header from '@/components/Header/Header';
 import HomeSection from '../HomeSection/HomeSection';
+import AboutSection from '../AboutSection/AboutSection';
 
 const Landing = () => {
   return (
@@ -9,12 +10,7 @@ const Landing = () => {
       <main>
         <HomeSection />
 
-        <div
-          id="about"
-          className="h-screen bg-green-100 flex items-center justify-center"
-        >
-          <h1 className="text-4xl font-bold">About Section</h1>
-        </div>
+        <AboutSection />
 
         <div
           id="projects"
