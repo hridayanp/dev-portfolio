@@ -25,12 +25,18 @@ export default function AboutSection() {
   return (
     <section
       ref={containerRef}
-      className="h-[300vh] w-screen relative bg-[#B5B1D6]"
+      className="h-[300vh] w-screen relative "
       id="about"
     >
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full z-0 animate-gradient"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      />
       <div className="h-screen flex items-center justify-center sticky top-0">
         <motion.div
-          className="w-full max-w-[900px] p-[30px] rounded-xl bg-[#EAE4F9]/40 backdrop-blur-md border border-white/20 shadow-lg flex justify-center items-center"
+          className="w-full max-w-[900px] p-[30px] rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg flex justify-center items-center"
           style={{ zIndex: 1 }}
         >
           <Card className="bg-white w-full rounded-xl">
@@ -46,7 +52,7 @@ export default function AboutSection() {
       <div className="h-screen flex items-center justify-center sticky top-0">
         <motion.div
           style={{ y: card2Y, zIndex: 2 }}
-          className="w-full max-w-[900px] p-[30px] rounded-xl bg-[#EAE4F9]/40 backdrop-blur-md border border-white/20 shadow-lg flex justify-center items-center"
+          className="w-full max-w-[900px] p-[30px] rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg flex justify-center items-center"
         >
           <Card className="bg-white w-full rounded-xl">
             <CardContent className="p-6">
@@ -61,7 +67,7 @@ export default function AboutSection() {
       <div className="h-screen flex items-center justify-center sticky top-0">
         <motion.div
           style={{ y: card3Y, zIndex: 3 }}
-          className="w-full max-w-[900px] p-[30px] rounded-xl bg-[#EAE4F9]/40 backdrop-blur-md border border-white/20 shadow-lg flex justify-center items-center"
+          className="w-full max-w-[900px] p-[30px] rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg flex justify-center items-center"
         >
           <Card className="bg-white w-full rounded-xl">
             <CardContent className="p-6">
