@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { name: 'Home', targetId: 'home' },
-  { name: 'About', targetId: 'about' },
+  { name: 'About Me', targetId: 'about' },
   { name: 'Projects', targetId: 'projects' },
   { name: 'Contact', targetId: 'contact' },
 ];
@@ -68,7 +68,7 @@ export default function Header() {
     >
       {/* Desktop Nav */}
       <div className="hidden sm:flex mx-auto max-w-4xl px-4 py-3 justify-center">
-        <div className="relative flex overflow-hidden rounded-full bg-white shadow-sm h-[55px]">
+        <div className="relative flex overflow-hidden rounded-full bg-white shadow-md h-[55px]">
           <motion.div
             className="absolute top-0 bottom-0 rounded-full bg-orange-500"
             layout
@@ -86,7 +86,7 @@ export default function Header() {
               }}
               onClick={() => scrollToSection(targetId)}
               className={cn(
-                'relative z-10 h-full w-[95px] rounded-full text-sm font-medium transition-all duration-200',
+                'relative z-10 h-full w-[150px] rounded-full text-xl font-medium transition-all duration-200',
                 activeSection === targetId
                   ? 'text-white'
                   : 'text-black hover:text-orange-500'
