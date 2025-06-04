@@ -86,7 +86,7 @@ export default function Header() {
               }}
               onClick={() => scrollToSection(targetId)}
               className={cn(
-                'relative z-10 h-full w-[150px] rounded-full text-xl font-medium transition-all duration-200',
+                'relative z-10 h-full w-[150px] rounded-full text-lg font-medium transition-all duration-200',
                 activeSection === targetId
                   ? 'text-white'
                   : 'text-black hover:text-orange-500'
